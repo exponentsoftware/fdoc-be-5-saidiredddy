@@ -1,0 +1,16 @@
+const express = require('express');
+const router = express.Router();
+const user = require('../controller/userController');
+const checkAuth = require('../middleware/checkAuth')
+
+router.post('/signup', user.signup);
+router.post('/login', user.login);
+
+router.get('/', user.getAllUser)
+router.get('/:id', user.getUserById)
+
+router.get('/', checkAuth ,(req, res) => {
+    res.send("hello World")
+})
+
+module.exports = router
